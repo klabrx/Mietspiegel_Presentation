@@ -1,0 +1,45 @@
+---
+title: "Mietspiegel im Alleingang? Geht das?"
+author: "Klaus Brückner, Statistikstelle der Stadt Passau"
+date: "Oktober 2021"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Die Vorgeschichte
+
+- 2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
+- Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
+- Die extrem dünne Datenbasis des "Seminar"-Mietspiegels dazu sollte erheblich erweitert werden.
+- 
+
+## Das erste Problem
+- Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche Befragung war nicht vorgesehen.
+- Lösung: Postalische Befragung aller Mittglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
+
+## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
+- ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
+- vermeintliche Lösung: Nacherhebung der fehlenden Angaben? Bei einer anonymen Erhebung?
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
