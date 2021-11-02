@@ -8,28 +8,50 @@ output: slidy_presentation
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
 ## Die Vorgeschichte
 
-- 2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
-- Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
-- Die extrem dünne Datenbasis des "Seminar"-Mietspiegels dazu sollte erheblich erweitert werden.
-- 
+-   2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
+
+-   Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
+
+-   Die extrem dünne Datenbasis des "Seminar"-Mietspiegels dazu sollte erheblich erweitert werden.
+
+-   
 
 ## Das erste Problem
-- Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche Befragung war nicht vorgesehen.
-- Lösung: Postalische Befragung aller Mittglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
+
+-   Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche Befragung war nicht vorgesehen.
+    -   Lösung: Postalische Befragung aller Mitglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
+    -   Repräsentativität? ... allenfalls fraglich
+    -   Datenqualität? ... schwer einzuschätzen
 
 ## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
-- ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
-- vermeintliche Lösung: Nacherhebung der fehlenden Angaben? Bei einer anonymen Erhebung?
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+-   ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
+-   vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
+    -   Bei einer anonymen Erhebung? 
+
+## Fehlende Zellenbesetzung im Tabellenmietspiegel
+
+Geplante Tabellendimenionierung:
+
+-   Drei Lagen
+-   Drei Größenklassen
+-   Drei Baujahresklassen
+
+Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich => 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass von 27 Tabellenfeldert nur 16 ausreichend gefüllt waren.
+
+## Methodenwechsel: Von der Tabelle zur Regression
+
+-  Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.
+-  Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R
 
 ## Slide with Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+-   Bullet 1
+-   Bullet 2
+-   Bullet 3
 
 ## Slide with R Output
 
@@ -42,4 +64,3 @@ summary(cars)
 ```{r pressure}
 plot(pressure)
 ```
-
