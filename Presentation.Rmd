@@ -17,11 +17,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 -   Die extrem dünne Datenbasis des "Seminar"-Mietspiegels dazu sollte erheblich erweitert werden.
 
--   
+-   Ein "Arbeitskreis Mietspiegel" bestehend im Kern aus Mieterverein, Haus&Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).
 
 ## Das erste Problem
 
--   Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche Befragung war nicht vorgesehen.
+-   Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche persönliche Befragung war nicht vorgesehen.
+
     -   Lösung: Postalische Befragung aller Mitglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
     -   Repräsentativität? ... allenfalls fraglich
     -   Datenqualität? ... schwer einzuschätzen
@@ -29,8 +30,10 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
 
 -   ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
+
 -   vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
-    -   Bei einer anonymen Erhebung? 
+
+    -   Bei einer anonymen Erhebung?
 
 ## Fehlende Zellenbesetzung im Tabellenmietspiegel
 
@@ -40,12 +43,56 @@ Geplante Tabellendimenionierung:
 -   Drei Größenklassen
 -   Drei Baujahresklassen
 
-Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich => 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass von 27 Tabellenfeldert nur 16 ausreichend gefüllt waren.
+Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
 
 ## Methodenwechsel: Von der Tabelle zur Regression
 
--  Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.
--  Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R
+-   Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.
+-   Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R als Programmier- bzw. Skriptsprache.
+
+## Der erste Regressionsmietspiegel
+
+-   In Anlehnung an das "Regensburger Modell" wurde die Wohnungsgröße als der einflussstärkste Regressor festgestellt.
+-   Alle weiteren Parameter führen zu Zu-/Abschlägen
+
+## Verabschiedung, veröffentlichung
+
+-   Abstimmung im AK Mietspiegel
+-   Beschluss im Stadtrat
+-   Gemeinsame Unterzeichnung und Veröffentlichung
+
+## Erste Erfahrungen
+
+-   Fast ausnahmslos positive Aufnahme des Mietspiegels im Mietmarkt
+-   Gerichtliche Auseinandersetzungen um Mieterhöhungen gehen gegen null.
+-   Aber: Begrifflichkeiten werden gerne mal falsch interpretiert.
+-   Auskunftsdienst wird zur Daueraufgabe
+
+## Nach zwei Jahren: Indexfortschreibung
+
+-   Zwar hätten es die ersten Erfahrungen gerechtfertigt, einen von Grund auf neuen Mietspiegel zu erstellen (ohne die zahlreichen "Jugendsünden"),
+-   Aber: Nach dem Jahrtausendhochwasser in 2013 war insbesondere der Mietwohnungsmarkt noch weit von einem Normalzustand entfernt.
+-   Nach Abstimmung im AK Mietspiegel: Indexfortschreibung 2015-2017 und gleichzeitig ausführliche Vorbereitung einer Neuerhebung in 2017
+
+## Mietspiegel 2.0
+
+-   Vorgaben: Diesmal eine repräsentative Erhebung
+-   Regressionsmodell
+-   Anpassung/AKtualisierung der Lagenkartierung
+
+## Erhebung nach außen vergeben
+
+-   Beauftragt wurde ein Marktforschungsinstitut an der Uni Passau
+
+-   Vorarbeit der Stadt:
+
+    -   Lieferung einer Vorauswahl aus den Meldedaten
+
+        -   Nur Haushaltsvorstände
+
+        -   ohne eigenen Immobilienbesitz vor Ort
+
+    -   Mitwirkung bei der Erstellung des Fragenkataloges
 
 ## Slide with Bullets
 
