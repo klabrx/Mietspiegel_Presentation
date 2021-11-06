@@ -1,21 +1,45 @@
 ---
 title: "Mietspiegel im Alleingang? Geht das?"
 author: "Klaus Brückner, Statistikstelle der Stadt Passau"
-date: "Oktober 2021"
-output: slidy_presentation
+date: "November 2021"
+output:
+    revealjs::revealjs_presentation:
+        self_contained: FALSE
+        theme: league
+        incremental: TRUE
+        footer: "Klaus Brückner, Statistikstelle der Stadt Passau"
+        reveal_plugins: ["menu"]
+        reveal_options:
+            menu:
+                numbers: true
+        slideNumber: 'c/t'
+
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+## Aktueller Mietspiegel-"Status" in Passau
+-   2012: Erster Anlauf
+-   2013: Mietspiegel 1.0 (Versuchte Tabelle, dann Regression)
+-   2015: Mietspiegel 1.1 (Indexfortschreibung)
+-   2017: Mietspiegel 2.0 (Neuerhebung, Regression)
+-   2019: Mietspiegel 2.1 (Indexfortschreibung)
+-   2021: Mietspiegel 2.2 (Auslaufenlassen der Qualifizierung)
+    -   Keine Terminkollision mit Zensus
+    -   Corona-Situation nicht planbar
+    -   Erneute Indexfortschreibung
+        -   nur zur Preisanpassung
+        -   führt nicht mehr zur Qualifizierung
+    -   Abwarten der neuen Gesetzgebung
+
 
 ## Die Vorgeschichte
 
 -   2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
 
 -   Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
-
--   Die extrem dünne Datenbasis des "Seminar"-Mietspiegels dazu sollte erheblich erweitert werden.
 
 -   Ein "Arbeitskreis Mietspiegel" bestehend im Kern aus Mieterverein, Haus&Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).
 
@@ -43,7 +67,8 @@ Geplante Tabellendimenionierung:
 -   Drei Größenklassen
 -   Drei Baujahresklassen
 
-Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
+
+-   Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
 
 ## Methodenwechsel: Von der Tabelle zur Regression
 
@@ -68,7 +93,7 @@ Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je 
 -   Aber: Begrifflichkeiten werden gerne mal falsch interpretiert.
 -   Auskunftsdienst wird zur Daueraufgabe
 
-## Nach zwei Jahren: Indexfortschreibung
+## 2015: Mietspiegel 1.1 (Indexfortschreibung)
 
 -   Zwar hätten es die ersten Erfahrungen gerechtfertigt, einen von Grund auf neuen Mietspiegel zu erstellen (ohne die zahlreichen "Jugendsünden"),
 -   Aber: Nach dem Jahrtausendhochwasser in 2013 war insbesondere der Mietwohnungsmarkt noch weit von einem Normalzustand entfernt.
@@ -85,29 +110,9 @@ Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je 
 -   Beauftragt wurde ein Marktforschungsinstitut an der Uni Passau
 
 -   Vorarbeit der Stadt:
-
     -   Lieferung einer Vorauswahl aus den Meldedaten
-
-        -   Nur Haushaltsvorstände
-
-        -   ohne eigenen Immobilienbesitz vor Ort
+        -   Nur Haushaltsvorstände (aus HHSTAT)
+        -   ohne eigenen Immobilienbesitz vor Ort (aus ALKIS)
 
     -   Mitwirkung bei der Erstellung des Fragenkataloges
 
-## Slide with Bullets
-
--   Bullet 1
--   Bullet 2
--   Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
