@@ -4,22 +4,22 @@ author: "Klaus Brückner, Statistikstelle der Stadt Passau"
 date: "November 2021"
 output:
     revealjs::revealjs_presentation:
+        css: styles.css
         self_contained: FALSE
-        theme: league
+        theme: serif
         incremental: TRUE
         footer: "Klaus Brückner, Statistikstelle der Stadt Passau"
-        reveal_plugins: ["menu"]
+        reveal_plugins: ["menu", "notes"]
         reveal_options:
             menu:
                 numbers: true
         slideNumber: 'c/t'
-
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
 ## Aktueller Mietspiegel-"Status" in Passau
 -   2012: Erster Anlauf
 -   2013: Mietspiegel 1.0 (Versuchte Tabelle, dann Regression)
@@ -29,46 +29,34 @@ knitr::opts_chunk$set(echo = FALSE)
 -   2021: Mietspiegel 2.2 (Auslaufenlassen der Qualifizierung)
     -   Keine Terminkollision mit Zensus
     -   Corona-Situation nicht planbar
+    -   Abwarten der neuen Gesetzgebung
     -   Erneute Indexfortschreibung
         -   nur zur Preisanpassung
         -   führt nicht mehr zur Qualifizierung
-    -   Abwarten der neuen Gesetzgebung
-
 
 ## Die Vorgeschichte
-
 -   2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
-
 -   Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
-
 -   Ein "Arbeitskreis Mietspiegel" bestehend im Kern aus Mieterverein, Haus&Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).
 
 ## Das erste Problem
-
 -   Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche persönliche Befragung war nicht vorgesehen.
-
-    -   Lösung: Postalische Befragung aller Mitglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
+-   Lösung: Postalische Befragung aller Mitglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
     -   Repräsentativität? ... allenfalls fraglich
     -   Datenqualität? ... schwer einzuschätzen
 
 ## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
-
 -   ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
-
 -   vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
-
     -   Bei einer anonymen Erhebung?
 
 ## Fehlende Zellenbesetzung im Tabellenmietspiegel
-
-Geplante Tabellendimenionierung:
-
 -   Drei Lagen
 -   Drei Größenklassen
 -   Drei Baujahresklassen
-
-
--   Somit: 27 zu besetzende Tabellenfelder, dabei sind nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle. Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
+-   Somit: 27 zu besetzende Tabellenfelder
+    -   nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle
+    -   Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
 
 ## Methodenwechsel: Von der Tabelle zur Regression
 
@@ -80,7 +68,7 @@ Geplante Tabellendimenionierung:
 -   In Anlehnung an das "Regensburger Modell" wurde die Wohnungsgröße als der einflussstärkste Regressor festgestellt.
 -   Alle weiteren Parameter führen zu Zu-/Abschlägen
 
-## Verabschiedung, veröffentlichung
+## Verabschiedung, Veröffentlichung
 
 -   Abstimmung im AK Mietspiegel
 -   Beschluss im Stadtrat
@@ -102,17 +90,30 @@ Geplante Tabellendimenionierung:
 ## Mietspiegel 2.0
 
 -   Vorgaben: Diesmal eine repräsentative Erhebung
+-   Vergabe an ein Marktforschungsinstitut an der Uni Passau
+-   Vorbereitung der Grundgesamtheit
+    -   Nur Haushaltsvorstände (HHSTAT)
+    -   ... ohne eigenen Immobilienbesitz vor Ort (ALKIS)
 -   Regressionsmodell
 -   Anpassung/AKtualisierung der Lagenkartierung
 
-## Erhebung nach außen vergeben
+## Mietspiegel 2.1 (Indexfortschreibung)
 
--   Beauftragt wurde ein Marktforschungsinstitut an der Uni Passau
+-   Analog zu 2015, ergänzt um:
+-   Überarbeitung der Wohnlagenkartierung (neue Baugebiete etc.)
 
--   Vorarbeit der Stadt:
-    -   Lieferung einer Vorauswahl aus den Meldedaten
-        -   Nur Haushaltsvorstände (aus HHSTAT)
-        -   ohne eigenen Immobilienbesitz vor Ort (aus ALKIS)
+## Grundsätzlicher Ansatz der Stadt Passau
 
-    -   Mitwirkung bei der Erstellung des Fragenkataloges
-
+-   Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern gesetzlich beschriebene Option zur Bestimmung der ortsüblichen Vergleichsmiete
+-   Diese wiederum wird gebildet aus ...
+    -   den üblichen Entgelten, die ...
+    -   in der Gemeinde oder einer vergleichbaren Gemeinde ...
+    -   für Wohnraum vergleichbarer ...
+        -   Art,
+        -   Größe,
+        -   Ausstattung (auch energetisch),
+        -   Beschaffenheit (auch energetisch) und
+        -   Lage [...]
+    -   in den letzten sechs Jahren
+        -   vereinbart oder [...]
+        -   geändert worden sind.
