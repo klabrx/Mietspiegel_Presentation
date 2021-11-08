@@ -123,6 +123,31 @@ knitr::opts_chunk$set(echo = FALSE)
       - geändert worden sind.
 -  Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
 
+## Was steht im Gesetz (bisher nur im Bundesgesetzblatt)?
+-  §558d (neu) BGB:
+   -  "Gemeinde" wird zu "nach Landesrecht zuständige Behörde"
+   -  Qualifizierung wird erreicht/vermutet durch ...
+      -  Einhaltung der (neuen) Mietspiegelverordnung , oder ...
+      -  Anerkennung der Qualifizierung durch Gemeinde (s.o.) und Interessensvertreter
+   -  Mietspiegel sind Pflicht ab 50.000 Einwohner
+
+## Was steht in der Mietspiegelverordnung (MsV)?
+-  Begriffsbestimmungen
+   -  Gesetzliche und außergesetzliche wohnwertrelevante Merkmale
+   -  Auswertungs-/Erhebungsgrundgesamtheit
+ ## Einfacher Mietspiegel in der MsV
+-  Keine Vorgaben zu Erstellung und Anpassung
+-  Dokumentation und kostenfreie Veröffentlichung im Internet
+## Qualifizierter Mietspiegel in der MsV
+-  Methode: Tabellen- und/oder Regressionsanalyse, ersatzweise eine vergleichbar geeignete Methode
+-  Datengrundlage:
+   -  Repräsentative Primärdatenerhebung
+   -  Sekundärdaten nur zur Vorbereitung/Plausibilisierung
+   -  Einschätzungen, Sekundärdaten oder Primärdaten ohne ausreichende Signifikanz nicht im qualifizierten Teil und nur mit ausdrücklichem Hinweis
+-  Umfangreiche Methodenhinweise zu Stichprobenumfang, Datenaufbereitung, Vergleichsmietenbestimmung
+-  Hinweise zu Art, Größe, Beschaffenheit, Ausstattung und Wohnlagen
+-  Hinweise zu Dokumentation und Veröffentlichung
+
 ## Was steht nicht im Gesetz?
 -  Es wird nicht verlangt, ...
    -  dass der Mietspiegel einer inhaltlichen und methodischen Überprüfung auf allerhöchstem akademischem Niveau standhalten muss,
