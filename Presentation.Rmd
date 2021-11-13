@@ -104,7 +104,7 @@ knitr::opts_chunk$set(echo = FALSE)
 -  Die für die Neuaufstellung eines qualifizierten Mietspegels erforderliche Erhebung wäre zeitlich sehr eng mit dem ursprünglich für 2021 geplanten Zensus (insbesondere der GWZ) zusammengefallen.
 -  Die Corona-Lage war mehr als unübersichtlich, Tür-zu-Tür-Interviews erschienen nicht vertretbar.
 -  Die gesetzlichen Rahmenbedingungen waren im Umbruch begriffen.
--  BESCHLUSS: Vorerste **keine** Neuerhebung, die Zeit bis nach dem Zensus wird mit der Fortsetzung des qualifizierten Mietspiegels als einfachem Mietspiegel überbrückt.
+-  BESCHLUSS: Vorerst **keine** Neuerhebung, die Zeit bis nach dem Zensus wird mit der Fortsetzung des qualifizierten Mietspiegels als einfachem Mietspiegel überbrückt.
    -  Trotzdem: Indexfortschreibung, um wenigstens in gewissem Umfang für eine Preisanpassung zu sorgen
 
 ## Pragmatischer Ansatz der Stadt Passau
@@ -121,7 +121,36 @@ knitr::opts_chunk$set(echo = FALSE)
    -  in den letzten sechs Jahren
       - vereinbart oder [...]
       - geändert worden sind.
+
+***
 -  Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
+
+## Was steht im Gesetz (bisher nur im Bundesgesetzblatt)?
+-  §558d (neu) BGB:
+   -  "Gemeinde" wird zu "nach Landesrecht zuständige Behörde"
+   -  Qualifizierung wird erreicht/vermutet durch ...
+      -  Einhaltung der (neuen) Mietspiegelverordnung , oder ...
+      -  Anerkennung der Qualifizierung durch Gemeinde (s.o.) und Interessensvertreter
+   -  Mietspiegel sind Pflicht ab 50.000 Einwohner
+
+## Was steht in der Mietspiegelverordnung (MsV)?
+-  Begriffsbestimmungen
+   -  Gesetzliche und außergesetzliche wohnwertrelevante Merkmale
+   -  Auswertungs-/Erhebungsgrundgesamtheit
+
+## Einfacher Mietspiegel in der MsV
+-  Keine Vorgaben zu Erstellung und Anpassung
+-  Dokumentation und kostenfreie Veröffentlichung im Internet
+
+## Qualifizierter Mietspiegel in der MsV
+-  Methode: Tabellen- und/oder Regressionsanalyse, ersatzweise eine vergleichbar geeignete Methode
+-  Datengrundlage:
+   -  Repräsentative Primärdatenerhebung
+   -  Sekundärdaten nur zur Vorbereitung/Plausibilisierung
+   -  Einschätzungen, Sekundärdaten oder Primärdaten ohne ausreichende Signifikanz nicht im qualifizierten Teil und nur mit ausdrücklichem Hinweis
+-  Umfangreiche Methodenhinweise zu Stichprobenumfang, Datenaufbereitung, Vergleichsmietenbestimmung
+-  Hinweise zu Art, Größe, Beschaffenheit, Ausstattung und Wohnlagen
+-  Hinweise zu Dokumentation und Veröffentlichung
 
 ## Was steht nicht im Gesetz?
 -  Es wird nicht verlangt, ...
