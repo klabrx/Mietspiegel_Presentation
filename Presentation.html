@@ -1,765 +1,526 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="Klaus Brückner, Statistikstelle der Stadt Passau" />
-  <title>Mietspiegel im Alleingang? Geht das?</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="Presentation_files/reveal.js-3.3.0.1/css/reveal.css"/>
-
-
-
-<link rel="stylesheet" href="Presentation_files/reveal.js-3.3.0.1/css/theme/serif.css" id="theme">
-
-
-  <!-- some tweaks to reveal css -->
-  <style type="text/css">
-    .reveal h1 { font-size: 2.0em; }
-    .reveal h2 { font-size: 1.5em;  }
-    .reveal h3 { font-size: 1.25em;	}
-    .reveal h4 { font-size: 1em;	}
-
-    .reveal .slides>section,
-    .reveal .slides>section>section {
-      padding: 0px 0px;
-    }
-
-
-
-    .reveal table {
-      border-width: 1px;
-      border-spacing: 2px;
-      border-style: dotted;
-      border-color: gray;
-      border-collapse: collapse;
-      font-size: 0.7em;
-    }
-
-    .reveal table th {
-      border-width: 1px;
-      padding-left: 10px;
-      padding-right: 25px;
-      font-weight: bold;
-      border-style: dotted;
-      border-color: gray;
-    }
-
-    .reveal table td {
-      border-width: 1px;
-      padding-left: 10px;
-      padding-right: 25px;
-      border-style: dotted;
-      border-color: gray;
-    }
-
-
-  </style>
-
-    <style type="text/css">code{white-space: pre;}</style>
-
-    <link rel="stylesheet" href="styles.css"/>
-
-<!-- Printing and PDF exports -->
-<script id="paper-css" type="application/dynamic-css">
-
-/* Default Print Stylesheet Template
-   by Rob Glazebrook of CSSnewbie.com
-   Last Updated: June 4, 2008
-
-   Feel free (nay, compelled) to edit, append, and
-   manipulate this file as you see fit. */
-
-
-@media print {
-
-	/* SECTION 1: Set default width, margin, float, and
-	   background. This prevents elements from extending
-	   beyond the edge of the printed page, and prevents
-	   unnecessary background images from printing */
-	html {
-		background: #fff;
-		width: auto;
-		height: auto;
-		overflow: visible;
-	}
-	body {
-		background: #fff;
-		font-size: 20pt;
-		width: auto;
-		height: auto;
-		border: 0;
-		margin: 0 5%;
-		padding: 0;
-		overflow: visible;
-		float: none !important;
-	}
-
-	/* SECTION 2: Remove any elements not needed in print.
-	   This would include navigation, ads, sidebars, etc. */
-	.nestedarrow,
-	.controls,
-	.fork-reveal,
-	.share-reveal,
-	.state-background,
-	.reveal .progress,
-	.reveal .backgrounds {
-		display: none !important;
-	}
-
-	/* SECTION 3: Set body font face, size, and color.
-	   Consider using a serif font for readability. */
-	body, p, td, li, div {
-		font-size: 20pt!important;
-		font-family: Georgia, "Times New Roman", Times, serif !important;
-		color: #000;
-	}
-
-	/* SECTION 4: Set heading font face, sizes, and color.
-	   Differentiate your headings from your body text.
-	   Perhaps use a large sans-serif for distinction. */
-	h1,h2,h3,h4,h5,h6 {
-		color: #000!important;
-		height: auto;
-		line-height: normal;
-		font-family: Georgia, "Times New Roman", Times, serif !important;
-		text-shadow: 0 0 0 #000 !important;
-		text-align: left;
-		letter-spacing: normal;
-	}
-	/* Need to reduce the size of the fonts for printing */
-	h1 { font-size: 28pt !important;  }
-	h2 { font-size: 24pt !important; }
-	h3 { font-size: 22pt !important; }
-	h4 { font-size: 22pt !important; font-variant: small-caps; }
-	h5 { font-size: 21pt !important; }
-	h6 { font-size: 20pt !important; font-style: italic; }
-
-	/* SECTION 5: Make hyperlinks more usable.
-	   Ensure links are underlined, and consider appending
-	   the URL to the end of the link for usability. */
-	a:link,
-	a:visited {
-		color: #000 !important;
-		font-weight: bold;
-		text-decoration: underline;
-	}
-	/*
-	.reveal a:link:after,
-	.reveal a:visited:after {
-		content: " (" attr(href) ") ";
-		color: #222 !important;
-		font-size: 90%;
-	}
-	*/
-
-
-	/* SECTION 6: more reveal.js specific additions by @skypanther */
-	ul, ol, div, p {
-		visibility: visible;
-		position: static;
-		width: auto;
-		height: auto;
-		display: block;
-		overflow: visible;
-		margin: 0;
-		text-align: left !important;
-	}
-	.reveal pre,
-	.reveal table {
-		margin-left: 0;
-		margin-right: 0;
-	}
-	.reveal pre code {
-		padding: 20px;
-		border: 1px solid #ddd;
-	}
-	.reveal blockquote {
-		margin: 20px 0;
-	}
-	.reveal .slides {
-		position: static !important;
-		width: auto !important;
-		height: auto !important;
-
-		left: 0 !important;
-		top: 0 !important;
-		margin-left: 0 !important;
-		margin-top: 0 !important;
-		padding: 0 !important;
-		zoom: 1 !important;
-
-		overflow: visible !important;
-		display: block !important;
-
-		text-align: left !important;
-		-webkit-perspective: none;
-		   -moz-perspective: none;
-		    -ms-perspective: none;
-		        perspective: none;
-
-		-webkit-perspective-origin: 50% 50%;
-		   -moz-perspective-origin: 50% 50%;
-		    -ms-perspective-origin: 50% 50%;
-		        perspective-origin: 50% 50%;
-	}
-	.reveal .slides section {
-		visibility: visible !important;
-		position: static !important;
-		width: auto !important;
-		height: auto !important;
-		display: block !important;
-		overflow: visible !important;
-
-		left: 0 !important;
-		top: 0 !important;
-		margin-left: 0 !important;
-		margin-top: 0 !important;
-		padding: 60px 20px !important;
-		z-index: auto !important;
-
-		opacity: 1 !important;
-
-		page-break-after: always !important;
-
-		-webkit-transform-style: flat !important;
-		   -moz-transform-style: flat !important;
-		    -ms-transform-style: flat !important;
-		        transform-style: flat !important;
-
-		-webkit-transform: none !important;
-		   -moz-transform: none !important;
-		    -ms-transform: none !important;
-		        transform: none !important;
-
-		-webkit-transition: none !important;
-		   -moz-transition: none !important;
-		    -ms-transition: none !important;
-		        transition: none !important;
-	}
-	.reveal .slides section.stack {
-		padding: 0 !important;
-	}
-	.reveal section:last-of-type {
-		page-break-after: avoid !important;
-	}
-	.reveal section .fragment {
-		opacity: 1 !important;
-		visibility: visible !important;
-
-		-webkit-transform: none !important;
-		   -moz-transform: none !important;
-		    -ms-transform: none !important;
-		        transform: none !important;
-	}
-	.reveal section img {
-		display: block;
-		margin: 15px 0px;
-		background: rgba(255,255,255,1);
-		border: 1px solid #666;
-		box-shadow: none;
-	}
-
-	.reveal section small {
-		font-size: 0.8em;
-	}
-
-}  
-</script>
-
-
-<script id="pdf-css" type="application/dynamic-css">
-    
-/**
- * This stylesheet is used to print reveal.js
- * presentations to PDF.
- *
- * https://github.com/hakimel/reveal.js#pdf-export
- */
-
-* {
-	-webkit-print-color-adjust: exact;
-}
-
-body {
-	margin: 0 auto !important;
-	border: 0;
-	padding: 0;
-	float: none !important;
-	overflow: visible;
-}
-
-html {
-	width: 100%;
-	height: 100%;
-	overflow: visible;
-}
-
-/* Remove any elements not needed in print. */
-.nestedarrow,
-.reveal .controls,
-.reveal .progress,
-.reveal .playback,
-.reveal.overview,
-.fork-reveal,
-.share-reveal,
-.state-background {
-	display: none !important;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	text-shadow: 0 0 0 #000 !important;
-}
-
-.reveal pre code {
-	overflow: hidden !important;
-	font-family: Courier, 'Courier New', monospace !important;
-}
-
-ul, ol, div, p {
-	visibility: visible;
-	position: static;
-	width: auto;
-	height: auto;
-	display: block;
-	overflow: visible;
-	margin: auto;
-}
-.reveal {
-	width: auto !important;
-	height: auto !important;
-	overflow: hidden !important;
-}
-.reveal .slides {
-	position: static;
-	width: 100%;
-	height: auto;
-
-	left: auto;
-	top: auto;
-	margin: 0 !important;
-	padding: 0 !important;
-
-	overflow: visible;
-	display: block;
-
-	-webkit-perspective: none;
-	   -moz-perspective: none;
-	    -ms-perspective: none;
-	        perspective: none;
-
-	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
-	   -moz-perspective-origin: 50% 50%;
-	    -ms-perspective-origin: 50% 50%;
-	        perspective-origin: 50% 50%;
-}
-
-.reveal .slides section {
-	page-break-after: always !important;
-
-	visibility: visible !important;
-	position: relative !important;
-	display: block !important;
-	position: relative !important;
-
-	margin: 0 !important;
-	padding: 0 !important;
-	box-sizing: border-box !important;
-	min-height: 1px;
-
-	opacity: 1 !important;
-
-	-webkit-transform-style: flat !important;
-	   -moz-transform-style: flat !important;
-	    -ms-transform-style: flat !important;
-	        transform-style: flat !important;
-
-	-webkit-transform: none !important;
-	   -moz-transform: none !important;
-	    -ms-transform: none !important;
-	        transform: none !important;
-}
-
-.reveal section.stack {
-	margin: 0 !important;
-	padding: 0 !important;
-	page-break-after: avoid !important;
-	height: auto !important;
-	min-height: auto !important;
-}
-
-.reveal img {
-	box-shadow: none;
-}
-
-.reveal .roll {
-	overflow: visible;
-	line-height: 1em;
-}
-
-/* Slide backgrounds are placed inside of their slide when exporting to PDF */
-.reveal section .slide-background {
-	display: block !important;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: -1;
-}
-
-/* All elements should be above the slide-background */
-.reveal section>* {
-	position: relative;
-	z-index: 1;
-}
-
-/* Display slide speaker notes when 'showNotes' is enabled */
-.reveal .speaker-notes-pdf {
-	display: block;
-	width: 100%;
-	max-height: none;
-	left: auto;
-	top: auto;
-	z-index: 100;
-}
-
-/* Display slide numbers when 'slideNumber' is enabled */
-.reveal .slide-number-pdf {
-	display: block;
-	position: absolute;
-	font-size: 14px;
-}
-
-</script>
-
-
-<script>
-var style = document.createElement( 'style' );
-style.type = 'text/css';
-var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
-var style_script = document.getElementById(style_script_id).text;
-style.innerHTML = style_script;
-document.getElementsByTagName('head')[0].appendChild(style);
-</script>
-
-    <script src="Presentation_files/header-attrs-2.10/header-attrs.js"></script>
-    <link href="Presentation_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-    <link href="Presentation_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-</head>
-<body>
-  <div class="reveal">
-    <div class="slides">
-
-<section>
-    <h1 class="title">Mietspiegel im Alleingang? Geht das?</h1>
-    <h2 class="author">Klaus Brückner, Statistikstelle der Stadt Passau</h2>
-    <h3 class="date">November 2021</h3>
-</section>
-
-<section id="aktueller-mietspiegel-status-in-passau" class="slide level2">
-<h2>Aktueller Mietspiegel-“Status” in Passau</h2>
-<ul>
-<li class="fragment">2012: Erster Anlauf</li>
-<li class="fragment">2013: Mietspiegel 1.0 (Versuchte Tabelle, dann Regression)</li>
-<li class="fragment">2015: Mietspiegel 1.1 (Indexfortschreibung)</li>
-<li class="fragment">2017: Mietspiegel 2.0 (Neuerhebung, Regression)</li>
-<li class="fragment">2019: Mietspiegel 2.1 (Indexfortschreibung)</li>
-<li class="fragment">2021: Mietspiegel 2.2 (Auslaufenlassen der Qualifizierung)
-<ul>
-<li class="fragment">Keine Terminkollision mit Zensus</li>
-<li class="fragment">Corona-Situation nicht planbar</li>
-<li class="fragment">Abwarten der neuen Gesetzgebung</li>
-<li class="fragment">Erneute Indexfortschreibung
-<ul>
-<li class="fragment">nur zur Preisanpassung</li>
-<li class="fragment">führt nicht mehr zur Qualifizierung</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="die-vorgeschichte" class="slide level2">
-<h2>Die Vorgeschichte</h2>
-<ul>
-<li class="fragment">2012 - kurz nach dem Zensus - wandten sich <strong>unabhängig voneinander</strong> sowohl Haus&amp;Grund als auch der Mieterverein an den Oberbürgermeister: “Du hast doch jetzt eine Statistikstelle … die soll endlich mal einen Mietspiegel aufstellen!”</li>
-<li class="fragment">Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.</li>
-<li class="fragment">Ein “Arbeitskreis Mietspiegel” bestehend im Kern aus Mieterverein, Haus&amp;Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).</li>
-</ul>
-</section>
-<section id="das-erste-problem" class="slide level2">
-<h2>Das erste Problem</h2>
-<ul>
-<li class="fragment">Die Mietspiegelerstellung war im wesentlichen als “Quasi-Null-Budget-Veranstaltung” geplant, d.h. eine umfangreiche persönliche Befragung war nicht vorgesehen.</li>
-<li class="fragment">Lösung: Postalische Befragung aller Mitglieder von Haus&amp;Grund (für die Eigentümerseite) sowie vom Mieterverein
-<ul>
-<li class="fragment">Repräsentativität? … allenfalls fraglich</li>
-<li class="fragment">Datenqualität? … schwer einzuschätzen</li>
-</ul></li>
-</ul>
-</section>
-<section id="trügerisches-erfolgserlebnis-rücklauf-von-annähernd-3000-fragebögen" class="slide level2">
-<h2>Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen</h2>
-<ul>
-<li class="fragment">… von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)</li>
-<li class="fragment">vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
-<ul>
-<li class="fragment">Bei einer anonymen Erhebung?</li>
-</ul></li>
-</ul>
-</section>
-<section id="fehlende-zellenbesetzung-im-tabellenmietspiegel" class="slide level2">
-<h2>Fehlende Zellenbesetzung im Tabellenmietspiegel</h2>
-<ul>
-<li class="fragment">Drei Lagen</li>
-<li class="fragment">Drei Größenklassen</li>
-<li class="fragment">Drei Baujahresklassen</li>
-<li class="fragment">Somit: 27 zu besetzende Tabellenfelder
-<ul>
-<li class="fragment">nach Faustregel 30 Fälle je Zelle erforderlich =&gt; 810 Fälle</li>
-<li class="fragment">Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.</li>
-</ul></li>
-</ul>
-</section>
-<section id="methodenwechsel-von-der-tabelle-zur-regression" class="slide level2">
-<h2>Methodenwechsel: Von der Tabelle zur Regression</h2>
-<ul>
-<li class="fragment">Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.</li>
-<li class="fragment">Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R als Programmier- bzw. Skriptsprache.</li>
-</ul>
-</section>
-<section id="der-erste-regressionsmietspiegel" class="slide level2">
-<h2>Der erste Regressionsmietspiegel</h2>
-<ul>
-<li class="fragment">In Anlehnung an das “Regensburger Modell” wurde die Wohnungsgröße als der einflussstärkste Regressor festgestellt.</li>
-<li class="fragment">Alle weiteren Parameter führen zu Zu-/Abschlägen</li>
-</ul>
-</section>
-<section id="verabschiedung-veröffentlichung" class="slide level2">
-<h2>Verabschiedung, Veröffentlichung</h2>
-<ul>
-<li class="fragment">Abstimmung im AK Mietspiegel</li>
-<li class="fragment">Beschluss im Stadtrat</li>
-<li class="fragment">Gemeinsame Unterzeichnung und Veröffentlichung</li>
-</ul>
-</section>
-<section id="erste-erfahrungen" class="slide level2">
-<h2>Erste Erfahrungen</h2>
-<ul>
-<li class="fragment">Fast ausnahmslos positive Aufnahme des Mietspiegels im Mietmarkt</li>
-<li class="fragment">Gerichtliche Auseinandersetzungen um Mieterhöhungen gehen gegen null.</li>
-<li class="fragment">Aber: Begrifflichkeiten werden gerne mal falsch interpretiert.</li>
-<li class="fragment">Auskunftsdienst wird zur Daueraufgabe</li>
-</ul>
-</section>
-<section id="mietspiegel-1.1-indexfortschreibung" class="slide level2">
-<h2>2015: Mietspiegel 1.1 (Indexfortschreibung)</h2>
-<ul>
-<li class="fragment">Zwar hätten es die ersten Erfahrungen gerechtfertigt, einen von Grund auf neuen Mietspiegel zu erstellen (ohne die zahlreichen “Jugendsünden”),</li>
-<li class="fragment">Aber: Nach dem Jahrtausendhochwasser in 2013 war insbesondere der Mietwohnungsmarkt noch weit von einem Normalzustand entfernt.</li>
-<li class="fragment">Hinzu kam die Tatsache, dass die Stadt Passau in diesem Zeitraum einer der Hauptanlaufpunkte der “Balkanroute” während der dramatischen Migrationsmonate war (erneut eine “Lass-alles-andere-liegen-und-stehen-Situation”)</li>
-<li class="fragment">Nach Abstimmung im AK Mietspiegel: Indexfortschreibung 2015-2017 und gleichzeitig ausführliche Vorbereitung einer Neuerhebung in 2017</li>
-</ul>
-</section>
-<section id="mietspiegel-2.0" class="slide level2">
-<h2>2017: Mietspiegel 2.0</h2>
-<ul>
-<li class="fragment">Vorgaben: Diesmal (endlich) eine repräsentative Erhebung</li>
-<li class="fragment">Vergabe der Erhebung an ein Marktforschungsinstitut an der Uni Passau</li>
-<li class="fragment">Vorbereitung der Grundgesamtheit
-<ul>
-<li class="fragment">Nur Haushaltsvorstände (HHSTAT)</li>
-<li class="fragment">… ohne eigenen Immobilienbesitz vor Ort (ALKIS)</li>
-</ul></li>
-<li class="fragment">Regressionsmodell</li>
-<li class="fragment">Anpassung/AKtualisierung der Lagenkartierung</li>
-</ul>
-</section>
-<section id="mietspiegel-2.1-indexfortschreibung" class="slide level2">
-<h2>2019: Mietspiegel 2.1 (Indexfortschreibung)</h2>
-<ul>
-<li class="fragment">Analog zu 2015, ergänzt um:</li>
-<li class="fragment">Überarbeitung der Wohnlagenkartierung (neue Baugebiete etc.)</li>
-</ul>
-</section>
-<section id="mietspiegel-2.2-auslaufende-qualifizierung" class="slide level2">
-<h2>2021: Mietspiegel 2.2 (auslaufende Qualifizierung)</h2>
-<ul>
-<li class="fragment">Die für die Neuaufstellung eines qualifizierten Mietspegels erforderliche Erhebung wäre zeitlich sehr eng mit dem ursprünglich für 2021 geplanten Zensus (insbesondere der GWZ) zusammengefallen.</li>
-<li class="fragment">Die Corona-Lage war mehr als unübersichtlich, Tür-zu-Tür-Interviews erschienen nicht vertretbar.</li>
-<li class="fragment">Die gesetzlichen Rahmenbedingungen waren im Umbruch begriffen.</li>
-<li class="fragment">BESCHLUSS: Vorerst <strong>keine</strong> Neuerhebung, die Zeit bis nach dem Zensus wird mit der Fortsetzung des qualifizierten Mietspiegels als einfachem Mietspiegel überbrückt.
-<ul>
-<li class="fragment">Trotzdem: Indexfortschreibung, um wenigstens in gewissem Umfang für eine Preisanpassung zu sorgen</li>
-</ul></li>
-</ul>
-</section>
-<section id="pragmatischer-ansatz-der-stadt-passau" class="slide level2">
-<h2>Pragmatischer Ansatz der Stadt Passau</h2>
-<ul>
-<li class="fragment">Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)</li>
-<li class="fragment">Diese wiederum wird gebildet aus …
-<ul>
-<li class="fragment">den üblichen Entgelten, die …</li>
-<li class="fragment">in der Gemeinde oder einer vergleichbaren Gemeinde …</li>
-<li class="fragment">für Wohnraum vergleichbarer …
-<ul>
-<li class="fragment">Art,</li>
-<li class="fragment">Größe,</li>
-<li class="fragment">Ausstattung (auch energetisch),</li>
-<li class="fragment">Beschaffenheit (auch energetisch) und</li>
-<li class="fragment">Lage […]</li>
-</ul></li>
-<li class="fragment">in den letzten sechs Jahren
-<ul>
-<li class="fragment">vereinbart oder […]</li>
-<li class="fragment">geändert worden sind.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li class="fragment">Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, <em>kann</em> man berücksichtigen, <em>muss</em> man aber nicht.</li>
-</ul>
-</section>
-<section id="was-steht-im-gesetz-bisher-nur-im-bundesgesetzblatt" class="slide level2">
-<h2>Was steht im Gesetz (bisher nur im Bundesgesetzblatt)?</h2>
-<ul>
-<li class="fragment">§558d (neu) BGB:
-<ul>
-<li class="fragment">“Gemeinde” wird zu “nach Landesrecht zuständige Behörde”</li>
-<li class="fragment">Qualifizierung wird erreicht/vermutet durch …
-<ul>
-<li class="fragment">Einhaltung der (neuen) Mietspiegelverordnung , oder …</li>
-<li class="fragment">Anerkennung der Qualifizierung durch Gemeinde (s.o.) und Interessensvertreter</li>
-</ul></li>
-<li class="fragment">Mietspiegel sind Pflicht ab 50.000 Einwohner</li>
-</ul></li>
-</ul>
-</section>
-<section id="was-steht-in-der-mietspiegelverordnung-msv" class="slide level2">
-<h2>Was steht in der Mietspiegelverordnung (MsV)?</h2>
-<ul>
-<li class="fragment">Begriffsbestimmungen
-<ul>
-<li class="fragment">Gesetzliche und außergesetzliche wohnwertrelevante Merkmale</li>
-<li class="fragment">Auswertungs-/Erhebungsgrundgesamtheit</li>
-</ul></li>
-</ul>
-</section>
-<section id="einfacher-mietspiegel-in-der-msv" class="slide level2">
-<h2>Einfacher Mietspiegel in der MsV</h2>
-<ul>
-<li class="fragment">Keine Vorgaben zu Erstellung und Anpassung</li>
-<li class="fragment">Dokumentation und kostenfreie Veröffentlichung im Internet</li>
-</ul>
-</section>
-<section id="qualifizierter-mietspiegel-in-der-msv" class="slide level2">
-<h2>Qualifizierter Mietspiegel in der MsV</h2>
-<ul>
-<li class="fragment">Methode: Tabellen- und/oder Regressionsanalyse, ersatzweise eine vergleichbar geeignete Methode</li>
-<li class="fragment">Datengrundlage:
-<ul>
-<li class="fragment">Repräsentative Primärdatenerhebung</li>
-<li class="fragment">Sekundärdaten nur zur Vorbereitung/Plausibilisierung</li>
-<li class="fragment">Einschätzungen, Sekundärdaten oder Primärdaten ohne ausreichende Signifikanz nicht im qualifizierten Teil und nur mit ausdrücklichem Hinweis</li>
-</ul></li>
-<li class="fragment">Umfangreiche Methodenhinweise zu Stichprobenumfang, Datenaufbereitung, Vergleichsmietenbestimmung</li>
-<li class="fragment">Hinweise zu Art, Größe, Beschaffenheit, Ausstattung und Wohnlagen</li>
-<li class="fragment">Hinweise zu Dokumentation und Veröffentlichung</li>
-</ul>
-</section>
-<section id="was-steht-nicht-im-gesetz" class="slide level2">
-<h2>Was steht nicht im Gesetz?</h2>
-<ul>
-<li class="fragment">Es wird nicht verlangt, …
-<ul>
-<li class="fragment">dass der Mietspiegel einer inhaltlichen und methodischen Überprüfung auf allerhöchstem akademischem Niveau standhalten muss,</li>
-<li class="fragment">dass der Mietspiegel bis ins kleinste Detail jeder denkbaren Fallkonstellation gerecht werden muss,</li>
-<li class="fragment">dass es kein besseres als das gewählte Modell geben darf.</li>
-</ul></li>
-</ul>
-</section>
-<section id="ausblick" class="slide level2">
-<h2>Ausblick</h2>
-<ul>
-<li class="fragment">Mit der GWZ wird in 2021 eine <strong>VOLLERHEBUNG</strong> aller Gebäude und Wohnungen durchgeführt, die (unter anderem) Angaben zu folgenden Punkten (den “Big Five” aus § 558 Abs. 2 BGB) enthält:
-<ul>
-<li class="fragment">Art des Wohnraums,</li>
-<li class="fragment">Größe des Wohnraums,</li>
-<li class="fragment">Heizung (d.h. energetische Ausstattung) des Wohnraums,</li>
-<li class="fragment">Baujahr (und daraus durchaus ableitbare erwartete Beschaffenheit) des Gebäudes</li>
-<li class="fragment">Adresse (d.h. Lage) des Wohnraums</li>
-</ul></li>
-<li class="fragment">Die Nutzung dieser Daten für Mietspiegelzwecke ist in Art. 238 § 1 Abs. 5 EGBGB für abgeschottete Statistikstellen ausdrücklich vorgesehen.</li>
-</ul>
-</section>
-    </div>
-  </div>
-
-  <script src="Presentation_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
-  <script src="Presentation_files/reveal.js-3.3.0.1/js/reveal.js"></script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
-        // Vertical centering of slides
-        center: false,
-        // Transition style
-        transition: 'default', // none/fade/slide/convex/concave/zoom
-        // Transition style for full page slide backgrounds
-        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
-
-        menu: {
+<html lang="" xml:lang="">
+  <head>
+    <title>Mietspiegel im Alleingang? Geht das?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Klaus Brückner, Statistikstelle der Stadt Passau" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, title-slide, title-slide
+
+# Mietspiegel im Alleingang? Geht das?
+### Klaus Brückner, Statistikstelle der Stadt Passau
+### November 2021
+
+---
+
+
+
+
+## Aktueller Mietspiegel-"Status" in Passau
+--
+
+-  2012: Erster Anlauf
+
+--
+
+-  2013: Mietspiegel 1.0 (Versuchte Tabelle, dann Regression)
+
+--
+
+-  2015: Mietspiegel 1.1 (Indexfortschreibung)
+
+--
+
+-  2017: Mietspiegel 2.0 (Neuerhebung, Regression)
+
+--
+
+-  2019: Mietspiegel 2.1 (Indexfortschreibung)
+
+--
+
+-  2021: Mietspiegel 2.2 (Auslaufenlassen der Qualifizierung)
+
+--
+
+   -  Keine Terminkollision mit Zensus
+
+--
+
+   -  Corona-Situation nicht planbar
+
+--
+
+   -  Abwarten der neuen Gesetzgebung
+
+--
+
+   -  Erneute Indexfortschreibung
+      -  nur zur Preisanpassung
+      -  führt nicht mehr zur Qualifizierung
+
+---
+
+## Die Vorgeschichte
+
+--
+
+-  2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&amp;Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
+
+--
+
+-  Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
+
+--
+
+-  Ein "Arbeitskreis Mietspiegel" bestehend im Kern aus Mieterverein, Haus&amp;Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).
+
+---
+
+## Das erste Problem
+-  Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche persönliche Befragung war nicht vorgesehen.
+
+--
+
+-  Lösung: Postalische Befragung aller Mitglieder von Haus&amp;Grund (für die Eigentümerseite) sowie vom Mieterverein
+
+--
+
+   -  Repräsentativität? ... allenfalls fraglich
+
+--
+
+   -  Datenqualität? ... schwer einzuschätzen
+
+---
+
+## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
+-  ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
+
+--
+
+-  vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
+
+--
+
+   -  Bei einer anonymen Erhebung?
+
+---
+
+## Fehlende Zellenbesetzung im Tabellenmietspiegel
+-  Drei Lagen
+
+--
+
+-  Drei Größenklassen
+
+--
+
+-  Drei Baujahresklassen
+
+--
+
+-  Somit: 27 zu besetzende Tabellenfelder
+
+--
+
+   -  nach Faustregel 30 Fälle je Zelle erforderlich =\&gt; 810 Fälle
+
+--
+
+   -  Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
+
+---
+
+## Methodenwechsel: Von der Tabelle zur Regression
+
+-  Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.
+
+--
+
+-  Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R als Programmier- bzw. Skriptsprache.
+
+---
+
+## Der erste Regressionsmietspiegel
+
+-  In Anlehnung an das "Regensburger Modell" wurde die Wohnungsgröße als der einflussstärkste Regressor festgestellt.
+
+--
+
+-  Alle weiteren Parameter führen zu Zu-/Abschlägen
+
+---
+
+## Verabschiedung, Veröffentlichung
+
+
+--
+
+-  Abstimmung im AK Mietspiegel
+
+--
+
+-  Beschluss im Stadtrat
+
+--
+
+-  Gemeinsame Unterzeichnung und Veröffentlichung
+
+---
+
+## Erste Erfahrungen
+
+
+--
+
+-  Fast ausnahmslos positive Aufnahme des Mietspiegels im Mietmarkt
+
+--
+
+-  Gerichtliche Auseinandersetzungen um Mieterhöhungen gehen gegen null.
+
+--
+
+-  Aber: Begrifflichkeiten werden gerne mal falsch interpretiert.
+
+--
+
+-  Auskunftsdienst wird zur Daueraufgabe
+
+---
+
+## 2015: Mietspiegel 1.1 (Indexfortschreibung)
+
+
+--
+
+-  Zwar hätten es die ersten Erfahrungen gerechtfertigt, einen von Grund auf neuen Mietspiegel zu erstellen (ohne die zahlreichen "Jugendsünden"),
+
+--
+
+-  Aber: Nach dem Jahrtausendhochwasser in 2013 war insbesondere der Mietwohnungsmarkt noch weit von einem Normalzustand entfernt.
+
+--
+
+-  Hinzu kam die Tatsache, dass die Stadt Passau in diesem Zeitraum einer der Hauptanlaufpunkte der "Balkanroute" während der dramatischen Migrationsmonate war (erneut eine "Lass-alles-andere-liegen-und-stehen-Situation")
+
+--
+
+-  Nach Abstimmung im AK Mietspiegel: Indexfortschreibung 2015-2017 und gleichzeitig ausführliche Vorbereitung einer Neuerhebung in 2017
+
+---
+
+## 2017: Mietspiegel 2.0
+
+
+--
+
+-  Vorgaben: Diesmal (endlich) eine repräsentative Erhebung
+
+--
+
+-  Vergabe der Erhebung an ein Marktforschungsinstitut an der Uni Passau
+
+--
+
+-  Vorbereitung der Grundgesamtheit
+
+--
+
+   -  Nur Haushaltsvorstände (HHSTAT)
+
+--
+
+   -  ... ohne eigenen Immobilienbesitz vor Ort (ALKIS)
+
+--
+
+-  Regressionsmodell
+
+--
+
+-  Anpassung/Aktualisierung der Lagenkartierung
+
+---
+
+## 2019: Mietspiegel 2.1 (Indexfortschreibung)
+
+-  Analog zu 2015, ergänzt um:
+
+--
+
+-  Überarbeitung der Wohnlagenkartierung (neue Baugebiete etc.)
+
+---
+
+## 2021: Mietspiegel 2.2 (auslaufende Qualifizierung)
+
+--
+
+-  Die für die Neuaufstellung eines qualifizierten Mietspegels erforderliche Erhebung wäre zeitlich sehr eng mit dem ursprünglich für 2021 geplanten Zensus (insbesondere der GWZ) zusammengefallen.
+
+--
+
+-  Die Corona-Lage war mehr als unübersichtlich, Tür-zu-Tür-Interviews erschienen nicht vertretbar.
+
+--
+
+-  Die gesetzlichen Rahmenbedingungen waren im Umbruch begriffen.
+
+--
+
+-  BESCHLUSS: Vorerst **keine** Neuerhebung, die Zeit bis nach dem Zensus wird mit der Fortsetzung des qualifizierten Mietspiegels als einfachem Mietspiegel überbrückt.
+
+--
+
+   -  Trotzdem: Indexfortschreibung, um wenigstens in gewissem Umfang für eine Preisanpassung zu sorgen
+
+---
+
+## Pragmatischer Ansatz der Stadt Passau
+
+- Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)
+- Diese wiederum wird gebildet aus ...
+  - den üblichen Entgelten, die ...
+  - in der Gemeinde oder einer vergleichbaren Gemeinde ...
+  - für Wohnraum vergleichbarer ...
+      - Art,
+      - Größe,
+      - Ausstattung (auch energetisch),
+      - Beschaffenheit (auch energetisch) und
+      - Lage [...]
+  - in den letzten sechs Jahren
+      - vereinbart oder [...]
+      - geändert worden sind.
+- Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
+
+
+---
+
+## Was steht im Gesetz (bisher nur im Bundesgesetzblatt)?
+-  §558d (neu) BGB:
+   -  "Gemeinde" wird zu "nach Landesrecht zuständige Behörde"
+   -  Qualifizierung wird erreicht/vermutet durch ...
+      -  Einhaltung der (neuen) Mietspiegelverordnung , oder ...
+      -  Anerkennung der Qualifizierung durch Gemeinde (s.o.) und Interessensvertreter
+   -  Mietspiegel sind Pflicht ab 50.000 Einwohner
+
+---
+
+## Was steht in der Mietspiegelverordnung (MsV)?
+-  Begriffsbestimmungen
+   -  Gesetzliche und außergesetzliche wohnwertrelevante Merkmale
+   -  Auswertungs-/Erhebungsgrundgesamtheit
+
+---
+
+## Einfacher Mietspiegel in der MsV
+-  Keine Vorgaben zu Erstellung und Anpassung
+-  Dokumentation und kostenfreie Veröffentlichung im Internet
+
+## Qualifizierter Mietspiegel in der MsV
+
+--
+
+-  Methode: Tabellen- und/oder Regressionsanalyse, ersatzweise eine vergleichbar geeignete Methode
+
+--
+
+-  Datengrundlage:
+   -  Repräsentative Primärdatenerhebung
+   -  Sekundärdaten nur zur Vorbereitung/Plausibilisierung
+   -  Einschätzungen, Sekundärdaten oder Primärdaten ohne ausreichende Signifikanz nicht im qualifizierten Teil und nur mit ausdrücklichem Hinweis
+
+--
+
+-  Umfangreiche Methodenhinweise zu Stichprobenumfang, Datenaufbereitung, Vergleichsmietenbestimmung
+
+--
+
+-  Hinweise zu Art, Größe, Beschaffenheit, Ausstattung und Wohnlagen
+
+--
+
+-  Hinweise zu Dokumentation und Veröffentlichung
+
+---
+
+## Was steht nicht im Gesetz?
+
+--
+
+-  Es wird nicht verlangt, ...
+
+--
+
+   -  dass der Mietspiegel einer inhaltlichen und methodischen Überprüfung auf allerhöchstem akademischem Niveau standhalten muss,
+
+--
+
+   -  dass der Mietspiegel bis ins kleinste Detail jeder denkbaren Fallkonstellation gerecht werden muss,
+
+--
+
+   -  dass es kein besseres als das gewählte Modell geben darf.
+
    
-    
-    
-    
-    
-    
-    
- 
-          custom: false,
-          themes: false,
-          transitions: false
-        },
+---
 
+## Ausblick
 
+--
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
-          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
-        ]
-      });
-    </script>
-  <!-- dynamically load mathjax for compatibility with self-contained -->
-  <script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
+-  Mit der GWZ wird in 2021 eine **VOLLERHEBUNG** aller Gebäude und Wohnungen durchgeführt, die (unter anderem) Angaben zu folgenden Punkten (den "Big Five" aus § 558 Abs. 2 BGB) enthält:
+
+--
+
+   -  Art des Wohnraums,
+
+--
+
+   -  Größe des Wohnraums,
+
+--
+
+   -  Heizung (d.h. energetische Ausstattung) des Wohnraums,
+
+--
+
+   -  Baujahr (und daraus durchaus ableitbare erwartete Beschaffenheit) des Gebäudes
+
+--
+
+   -  Adresse (d.h. Lage) des Wohnraums
+
+--
+
+-  Die Nutzung dieser Daten für Mietspiegelzwecke ist in Art. 238 § 1 Abs. 5 EGBGB für abgeschottete Statistikstellen ausdrücklich vorgesehen.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
-  (function() {
-    if (window.jQuery) {
-      Reveal.addEventListener( 'slidechanged', function(event) {  
-        window.jQuery(event.previousSlide).trigger('hidden');
-        window.jQuery(event.currentSlide).trigger('shown');
-      });
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
     }
-  })();
+    i++;
+  }
+};
+slideshow._releaseMath(document);
 </script>
-
-
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
   </body>
 </html>

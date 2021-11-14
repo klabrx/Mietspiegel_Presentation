@@ -9,6 +9,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      titleSlideClass: ["center","middle","title-slide"]
 ---
 
 ```{r setup, include=FALSE}
@@ -279,35 +280,20 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Pragmatischer Ansatz der Stadt Passau
 
---
--  Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)
-
---
--  Diese wiederum wird gebildet aus ...
---
-   -  den üblichen Entgelten, die ...
---
-   -  in der Gemeinde oder einer vergleichbaren Gemeinde ...
---
-   -  für Wohnraum vergleichbarer ...
---
-      -  Art,
---
-      -  Größe,
---
-      -  Ausstattung (auch energetisch),
---
-      -  Beschaffenheit (auch energetisch) und
---
-      -  Lage [...]
---
-   -  in den letzten sechs Jahren
---
+- Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)
+- Diese wiederum wird gebildet aus ...
+  - den üblichen Entgelten, die ...
+  - in der Gemeinde oder einer vergleichbaren Gemeinde ...
+  - für Wohnraum vergleichbarer ...
+      - Art,
+      - Größe,
+      - Ausstattung (auch energetisch),
+      - Beschaffenheit (auch energetisch) und
+      - Lage [...]
+  - in den letzten sechs Jahren
       - vereinbart oder [...]
---
       - geändert worden sind.
----
--  Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
+- Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
 
 
 ---
