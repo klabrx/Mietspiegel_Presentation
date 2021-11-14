@@ -3,14 +3,12 @@ title: "Mietspiegel im Alleingang? Geht das?"
 author: "Klaus Brückner, Statistikstelle der Stadt Passau"
 date: "November 2021"
 output:
-    revealjs::revealjs_presentation:
-        css: styles.css
-        self_contained: FALSE
-        theme: serif
-        incremental: TRUE
-        footer: "Klaus Brückner, Statistikstelle der Stadt Passau"
-        reveal_plugins: ["menu", "notes"]
-        slideNumber: 'c/t'
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
 
 ```{r setup, include=FALSE}
@@ -18,112 +16,301 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Aktueller Mietspiegel-"Status" in Passau
+--
+
 -  2012: Erster Anlauf
+
+--
+
 -  2013: Mietspiegel 1.0 (Versuchte Tabelle, dann Regression)
+
+--
+
 -  2015: Mietspiegel 1.1 (Indexfortschreibung)
+
+--
+
 -  2017: Mietspiegel 2.0 (Neuerhebung, Regression)
+
+--
+
 -  2019: Mietspiegel 2.1 (Indexfortschreibung)
+
+--
+
 -  2021: Mietspiegel 2.2 (Auslaufenlassen der Qualifizierung)
+
+--
+
    -  Keine Terminkollision mit Zensus
+
+--
+
    -  Corona-Situation nicht planbar
+
+--
+
    -  Abwarten der neuen Gesetzgebung
+
+--
+
    -  Erneute Indexfortschreibung
       -  nur zur Preisanpassung
       -  führt nicht mehr zur Qualifizierung
 
+---
+
 ## Die Vorgeschichte
+
+--
+
 -  2012 - kurz nach dem Zensus - wandten sich **unabhängig voneinander** sowohl Haus&Grund als auch der Mieterverein an den Oberbürgermeister: "Du hast doch jetzt eine Statistikstelle ... die soll endlich mal einen Mietspiegel aufstellen!"
+
+--
+
 -  Kurz vorher war an der Universität Passau im Rahmen einer Seminararbeit ein Tabellenmietspiegel erstellt worden, dieser sollte als Grundlage dienen.
+
+--
+
 -  Ein "Arbeitskreis Mietspiegel" bestehend im Kern aus Mieterverein, Haus&Grund sowie der Stadt Passau wurde eingerichtet (und besteht seither als Dauereinrichtung).
+
+---
 
 ## Das erste Problem
 -  Die Mietspiegelerstellung war im wesentlichen als "Quasi-Null-Budget-Veranstaltung" geplant, d.h. eine umfangreiche persönliche Befragung war nicht vorgesehen.
+
+--
+
 -  Lösung: Postalische Befragung aller Mitglieder von Haus&Grund (für die Eigentümerseite) sowie vom Mieterverein
+
+--
+
    -  Repräsentativität? ... allenfalls fraglich
+
+--
+
    -  Datenqualität? ... schwer einzuschätzen
+
+---
 
 ## Trügerisches Erfolgserlebnis: Rücklauf von annähernd 3000 Fragebögen
 -  ... von denen allerdings nur sehr deutlich unter 1.000 verwertbar waren (fehlende Angaben, Dubletten, Angaben zu Wohnungen außerhalb der Stadt Passau)
+
+--
+
 -  vermeintliche Lösung: Nacherhebung der fehlenden Angaben?
+
+--
+
    -  Bei einer anonymen Erhebung?
+
+---
 
 ## Fehlende Zellenbesetzung im Tabellenmietspiegel
 -  Drei Lagen
+
+--
+
 -  Drei Größenklassen
+
+--
+
 -  Drei Baujahresklassen
+
+--
+
 -  Somit: 27 zu besetzende Tabellenfelder
+
+--
+
    -  nach Faustregel 30 Fälle je Zelle erforderlich =\> 810 Fälle
+
+--
+
    -  Allerdings hielten sich weder Mieter noch Vermieter an die Vorgaben des zentralen Grenzwertsatzes, so dass nicht einmal die Hälfte der 27 Tabellenfelder nur ausreichend gefüllt waren.
+
+---
 
 ## Methodenwechsel: Von der Tabelle zur Regression
 
 -  Am Statistiklehrstuhl der Universität Passau wurden im Verlauf eines intensiven halben Tages die grundsätzlichen Vorteile einer Regressionsberechnung gegenüber der Tabellenmethode verdeutlicht.
+
+--
+
 -  Kollateralnutzen und in der Folge unverzichtbare Grundlage jeder weiteren Beschäftigung war der erste Kontakt mit R als Programmier- bzw. Skriptsprache.
+
+---
 
 ## Der erste Regressionsmietspiegel
 
 -  In Anlehnung an das "Regensburger Modell" wurde die Wohnungsgröße als der einflussstärkste Regressor festgestellt.
+
+--
+
 -  Alle weiteren Parameter führen zu Zu-/Abschlägen
+
+---
 
 ## Verabschiedung, Veröffentlichung
 
+
+--
+
 -  Abstimmung im AK Mietspiegel
+
+--
+
 -  Beschluss im Stadtrat
+
+--
+
 -  Gemeinsame Unterzeichnung und Veröffentlichung
+
+---
 
 ## Erste Erfahrungen
 
+
+--
+
 -  Fast ausnahmslos positive Aufnahme des Mietspiegels im Mietmarkt
+
+--
+
 -  Gerichtliche Auseinandersetzungen um Mieterhöhungen gehen gegen null.
+
+--
+
 -  Aber: Begrifflichkeiten werden gerne mal falsch interpretiert.
+
+--
+
 -  Auskunftsdienst wird zur Daueraufgabe
+
+---
 
 ## 2015: Mietspiegel 1.1 (Indexfortschreibung)
 
+
+--
+
 -  Zwar hätten es die ersten Erfahrungen gerechtfertigt, einen von Grund auf neuen Mietspiegel zu erstellen (ohne die zahlreichen "Jugendsünden"),
+
+--
+
 -  Aber: Nach dem Jahrtausendhochwasser in 2013 war insbesondere der Mietwohnungsmarkt noch weit von einem Normalzustand entfernt.
+
+--
+
 -  Hinzu kam die Tatsache, dass die Stadt Passau in diesem Zeitraum einer der Hauptanlaufpunkte der "Balkanroute" während der dramatischen Migrationsmonate war (erneut eine "Lass-alles-andere-liegen-und-stehen-Situation")
+
+--
+
 -  Nach Abstimmung im AK Mietspiegel: Indexfortschreibung 2015-2017 und gleichzeitig ausführliche Vorbereitung einer Neuerhebung in 2017
+
+---
 
 ## 2017: Mietspiegel 2.0
 
+
+--
+
 -  Vorgaben: Diesmal (endlich) eine repräsentative Erhebung
+
+--
+
 -  Vergabe der Erhebung an ein Marktforschungsinstitut an der Uni Passau
+
+--
+
 -  Vorbereitung der Grundgesamtheit
+
+--
+
    -  Nur Haushaltsvorstände (HHSTAT)
+
+--
+
    -  ... ohne eigenen Immobilienbesitz vor Ort (ALKIS)
+
+--
+
 -  Regressionsmodell
--  Anpassung/AKtualisierung der Lagenkartierung
+
+--
+
+-  Anpassung/Aktualisierung der Lagenkartierung
+
+---
 
 ## 2019: Mietspiegel 2.1 (Indexfortschreibung)
 
 -  Analog zu 2015, ergänzt um:
+
+--
+
 -  Überarbeitung der Wohnlagenkartierung (neue Baugebiete etc.)
 
+---
+
 ## 2021: Mietspiegel 2.2 (auslaufende Qualifizierung)
+
+--
+
 -  Die für die Neuaufstellung eines qualifizierten Mietspegels erforderliche Erhebung wäre zeitlich sehr eng mit dem ursprünglich für 2021 geplanten Zensus (insbesondere der GWZ) zusammengefallen.
+
+--
+
 -  Die Corona-Lage war mehr als unübersichtlich, Tür-zu-Tür-Interviews erschienen nicht vertretbar.
+
+--
+
 -  Die gesetzlichen Rahmenbedingungen waren im Umbruch begriffen.
+
+--
+
 -  BESCHLUSS: Vorerst **keine** Neuerhebung, die Zeit bis nach dem Zensus wird mit der Fortsetzung des qualifizierten Mietspiegels als einfachem Mietspiegel überbrückt.
+
+--
+
    -  Trotzdem: Indexfortschreibung, um wenigstens in gewissem Umfang für eine Preisanpassung zu sorgen
 
-## Pragmatischer Ansatz der Stadt Passau
--  Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)
--  Diese wiederum wird gebildet aus ...
-   -  den üblichen Entgelten, die ...
-   -  in der Gemeinde oder einer vergleichbaren Gemeinde ...
-   -  für Wohnraum vergleichbarer ...
-      -  Art,
-      -  Größe,
-      -  Ausstattung (auch energetisch),
-      -  Beschaffenheit (auch energetisch) und
-      -  Lage [...]
-   -  in den letzten sechs Jahren
-      - vereinbart oder [...]
-      - geändert worden sind.
+---
 
-***
+## Pragmatischer Ansatz der Stadt Passau
+
+--
+-  Mietspiegel ist kein wissenschaftlicher Selbstzweck, sondern Option(§ 558a Abs. 2 Nr. 1 BGB)zur Bestimmung der ortsüblichen Vergleichsmiete (§ 558 Abs. 2 BGB)
+
+--
+-  Diese wiederum wird gebildet aus ...
+--
+   -  den üblichen Entgelten, die ...
+--
+   -  in der Gemeinde oder einer vergleichbaren Gemeinde ...
+--
+   -  für Wohnraum vergleichbarer ...
+--
+      -  Art,
+--
+      -  Größe,
+--
+      -  Ausstattung (auch energetisch),
+--
+      -  Beschaffenheit (auch energetisch) und
+--
+      -  Lage [...]
+--
+   -  in den letzten sechs Jahren
+--
+      - vereinbart oder [...]
+--
+      - geändert worden sind.
+---
 -  Außergesetzliche Mietwertmerkmale, wie sie z.B. in der neuen Mietspiegelverordnung genannt werden, *kann* man berücksichtigen, *muss* man aber nicht.
+
+
+---
 
 ## Was steht im Gesetz (bisher nur im Bundesgesetzblatt)?
 -  §558d (neu) BGB:
@@ -133,39 +320,93 @@ knitr::opts_chunk$set(echo = FALSE)
       -  Anerkennung der Qualifizierung durch Gemeinde (s.o.) und Interessensvertreter
    -  Mietspiegel sind Pflicht ab 50.000 Einwohner
 
+---
+
 ## Was steht in der Mietspiegelverordnung (MsV)?
 -  Begriffsbestimmungen
    -  Gesetzliche und außergesetzliche wohnwertrelevante Merkmale
    -  Auswertungs-/Erhebungsgrundgesamtheit
+
+---
 
 ## Einfacher Mietspiegel in der MsV
 -  Keine Vorgaben zu Erstellung und Anpassung
 -  Dokumentation und kostenfreie Veröffentlichung im Internet
 
 ## Qualifizierter Mietspiegel in der MsV
+
+--
+
 -  Methode: Tabellen- und/oder Regressionsanalyse, ersatzweise eine vergleichbar geeignete Methode
+
+--
+
 -  Datengrundlage:
    -  Repräsentative Primärdatenerhebung
    -  Sekundärdaten nur zur Vorbereitung/Plausibilisierung
    -  Einschätzungen, Sekundärdaten oder Primärdaten ohne ausreichende Signifikanz nicht im qualifizierten Teil und nur mit ausdrücklichem Hinweis
+
+--
+
 -  Umfangreiche Methodenhinweise zu Stichprobenumfang, Datenaufbereitung, Vergleichsmietenbestimmung
+
+--
+
 -  Hinweise zu Art, Größe, Beschaffenheit, Ausstattung und Wohnlagen
+
+--
+
 -  Hinweise zu Dokumentation und Veröffentlichung
 
+---
+
 ## Was steht nicht im Gesetz?
+
+--
+
 -  Es wird nicht verlangt, ...
+
+--
+
    -  dass der Mietspiegel einer inhaltlichen und methodischen Überprüfung auf allerhöchstem akademischem Niveau standhalten muss,
+
+--
+
    -  dass der Mietspiegel bis ins kleinste Detail jeder denkbaren Fallkonstellation gerecht werden muss,
+
+--
+
    -  dass es kein besseres als das gewählte Modell geben darf.
 
    
+---
+
 ## Ausblick
+
+--
+
 -  Mit der GWZ wird in 2021 eine **VOLLERHEBUNG** aller Gebäude und Wohnungen durchgeführt, die (unter anderem) Angaben zu folgenden Punkten (den "Big Five" aus § 558 Abs. 2 BGB) enthält:
+
+--
+
    -  Art des Wohnraums,
+
+--
+
    -  Größe des Wohnraums,
+
+--
+
    -  Heizung (d.h. energetische Ausstattung) des Wohnraums,
+
+--
+
    -  Baujahr (und daraus durchaus ableitbare erwartete Beschaffenheit) des Gebäudes
+
+--
+
    -  Adresse (d.h. Lage) des Wohnraums
+
+--
+
 -  Die Nutzung dieser Daten für Mietspiegelzwecke ist in Art. 238 § 1 Abs. 5 EGBGB für abgeschottete Statistikstellen ausdrücklich vorgesehen.
-
-
